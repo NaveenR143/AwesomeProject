@@ -4,7 +4,9 @@ import { ListItem } from 'react-native-elements';
 
 export default class StatesList extends Component {
 
-
+    constructor(props) {
+        super(props)
+    }
 
     render() {
         console.log(this.props.states);
@@ -14,13 +16,12 @@ export default class StatesList extends Component {
                 {
                     this.props.states.map((item, i) =>
                         <ListItem key={i}
-                            title={item.StateName}>
-
+                            title={item.StateName}
+                            onPress={() => this.props.funcFetchStatutes(item.StateID)}
+                        >
                         </ListItem>
 
                     )
-
-
                 }
             </View>
 
