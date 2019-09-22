@@ -6,6 +6,7 @@ import axios from './../../Api/axios';
 import StatesList from './../../Components/StatesList';
 import StatutesList from './../../Components/StatutesList';
 import RNFetchBlob from 'rn-fetch-blob';
+import { NavigationActions } from 'react-navigation';
 
 export default class HomeScreen extends Component {
 
@@ -60,46 +61,50 @@ export default class HomeScreen extends Component {
     }
 
     fetchStatutesDb = downloadurl => {
-        console.log("download " + downloadurl);
-        downloadurl = encodeURI('http://45.113.136.124:8880/smb/file-manager/download?currentDir=%2Fsqlite.stocksclue.com%2Fandroid&file=CaliforniaEvidenceCode');
 
-        console.log("download " + downloadurl);
+        NavigationActions.navigate(
+            'Statutes'
+        )
+        // console.log("download " + downloadurl);
+        // downloadurl = encodeURI('http://45.113.136.124:8880/smb/file-manager/download?currentDir=%2Fsqlite.stocksclue.com%2Fandroid&file=CaliforniaEvidenceCode');
 
-        RNFetchBlob.config({
-            // add this option that makes response data to be stored as a file,
-            // this is much more performant.
-            fileCache: true,
-            // path : RNFS.DocumentDirectoryPath + '/CaliforniaEvidenceCode.sqlite'
-            path : '/CaliforniaEvidenceCode.sqlite'
-        }).
+        // console.log("download " + downloadurl);
 
-        // // send http request in a new thread (using native code)
-        fetch('GET', "https://drive.google.com/uc?export=download&id=11noPBgs5NV6cFnGpLT2iXupGYj2yAmTP", {
-            // Authorization: 'Bearer access-token...',
-            // more headers  ..
-        })
-            .then((res) => {
-                let status = res.info().status;
+        // RNFetchBlob.config({
+        //     // add this option that makes response data to be stored as a file,
+        //     // this is much more performant.
+        //     fileCache: true,
+        //     // path : RNFS.DocumentDirectoryPath + '/CaliforniaEvidenceCode.sqlite'
+        //     path : '/CaliforniaEvidenceCode.sqlite'
+        // }).
 
-                console.log(status);
-                console.log('The file saved to ', res.path())
+        // // // send http request in a new thread (using native code)
+        // fetch('GET', "https://drive.google.com/uc?export=download&id=11noPBgs5NV6cFnGpLT2iXupGYj2yAmTP", {
+        //     // Authorization: 'Bearer access-token...',
+        //     // more headers  ..
+        // })
+        //     .then((res) => {
+        //         let status = res.info().status;
+
+        //         console.log(status);
+        //         console.log('The file saved to ', res.path())
 
 
-                // if (status == 200) {
-                //     // the conversion is done in native code
-                //     let base64Str = res.base64()
-                //     // the following conversions are done in js, it's SYNC
-                //     let text = res.text()
-                //     let json = res.json()
-                // } else {
-                //     // handle other status codes
-                // }
-            })
-            // Something went wrong:
-            .catch((errorMessage, statusCode) => {
-                // error handling
-                console.log(errorMessage);
-            })
+        //         // if (status == 200) {
+        //         //     // the conversion is done in native code
+        //         //     let base64Str = res.base64()
+        //         //     // the following conversions are done in js, it's SYNC
+        //         //     let text = res.text()
+        //         //     let json = res.json()
+        //         // } else {
+        //         //     // handle other status codes
+        //         // }
+        //     })
+        //     // Something went wrong:
+        //     .catch((errorMessage, statusCode) => {
+        //         // error handling
+        //         console.log(errorMessage);
+        //     })
     }
 
     render() {

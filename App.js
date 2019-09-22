@@ -34,7 +34,7 @@ const MainNavigator = createStackNavigator({
   Statutes: StatutesScreen
 },
   {
-    initialRouteName: 'Home'
+    initialRouteName: 'Statutes'
   })
 
 const App = createAppContainer(MainNavigator);
