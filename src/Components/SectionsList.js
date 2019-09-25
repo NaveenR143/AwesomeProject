@@ -34,7 +34,12 @@ export default class SectionsList extends Component {
                 {
                     this.props.sections.map((item, i) =>
                         <ListItem key={i}
-                            title={item.Description}
+                            title={
+                                <View>
+                                    <Text>{item.HeadingType}</Text>
+                                    <Text>{item.Description}</Text>
+                                </View>
+                            }
                             subtitle={
                                 <View>
                                     <Text>{item.Section}</Text>
